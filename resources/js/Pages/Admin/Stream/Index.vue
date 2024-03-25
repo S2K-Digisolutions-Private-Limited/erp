@@ -4,14 +4,14 @@ import { Head, Link, usePage } from '@inertiajs/vue3'
 <template>
 
     <Head>
-        <title>All Sections</title>
+        <title>All Streams</title>
     </Head>
     <main-vue>
         <v-card>
             <div class="d-flex align-center w-100 px-3 mt-4 mb-3">
-                <h3>All Section</h3>
-                <Link as="button" class="ms-auto" :href="route('section.create')">
-                <v-btn color="blue" size="small">Add Section</v-btn>
+                <h3>All Stream</h3>
+                <Link as="button" class="ms-auto" :href="route('stream.create')">
+                <v-btn color="blue" size="small">Add Stream</v-btn>
                 </Link>
             </div>
             <v-table>
@@ -20,17 +20,15 @@ import { Head, Link, usePage } from '@inertiajs/vue3'
                         <th>ID</th>
                         <th>Name</th>
                         <th>Class</th>
-                        <th>Student</th>
-                        <th>Teacher</th>
+                        <th>Students</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in usePage().props.sections" :key="item.id">
+                    <tr v-for="item in usePage().props.streams" :key="item.id">
                         <td>{{ item.id }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.class_name }}</td>
-                        <td>-</td>
                         <td>-</td>
                         <td>
                             <Link :href="item.editUrl" as="button">

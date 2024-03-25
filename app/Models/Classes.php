@@ -14,4 +14,13 @@ class Classes extends Model
         'has_stream',
         'school_id',
     ];
+
+    public function sections()
+    {
+        return $this->hasMany(Section::class, 'class_id', 'id');
+    }
+    public function streams()
+    {
+        return $this->hasMany(Stream::class, 'class_id', 'id');
+    }
 }

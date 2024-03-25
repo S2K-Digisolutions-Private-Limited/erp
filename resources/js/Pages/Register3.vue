@@ -17,7 +17,7 @@ let submit = () => {
     <Head>
         <title>Verify Email</title>
     </Head>
-    <div class="d-flex justify-center h-auto my-15 align-center">
+    <div style="min-height: 100vh;" class="d-flex justify-center align-center">
         <v-form @submit.prevent="submit">
             <v-card class="py-12 px-8 text-center mx-auto ma-4" max-width="420" width="100%">
 

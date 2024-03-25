@@ -15,6 +15,7 @@ class Classes extends Controller
         foreach ($classes as $class) {
             $class['editUrl'] = route('class.edit', $class['id']);
             $class['deleteUrl'] = route('class.delete', $class['id']);
+            $class['section_names'] = implode(' ,', $class->sections()->pluck('name')->toArray());
         }
         // dd($classes);
         return Inertia::render(
@@ -55,7 +56,14 @@ class Classes extends Controller
     }
     public function delete($id, Request $request)
     {
-        ClassModel::where("id", $id)->delete();
+        $class = ClassModel::where("id", $id)->first();
+        if (!$class->sections()->count() == 0) {
+            $request->session()->flash('error', 'Please Delete Section First !');
+        } elseif (!$class->streams()->count() == 0) {
+            $request->session()->flash('error', 'Please Delete Stream First !');
+        } else {
+            $class->delete();
+        }
         $request->session()->flash('success', 'Class Deleted !');
     }
 }

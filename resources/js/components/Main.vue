@@ -100,7 +100,7 @@ updateSnackbars(usePage().props.flash);
 export default {
     data: () => ({
         cards: ['Today', 'Yesterday'],
-        leftDrawer: true,
+        leftDrawer: false,
         rightDrawer: false,
         flash: {
             success: usePage().props.flash.success,

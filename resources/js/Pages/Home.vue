@@ -4,7 +4,7 @@
         <title>Dashboard</title>
     </Head>
     <MainVue>
-        Dashboard
+        <v-skeleton-loader type="card"></v-skeleton-loader>
     </MainVue>
 </template>
 

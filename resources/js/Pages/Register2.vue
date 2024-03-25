@@ -26,7 +26,7 @@ let submit = () => {
     <Head>
         <title>Basic Details</title>
     </Head>
-    <div class="d-flex justify-center h-auto my-15 align-center ">
+    <div style="min-height: 100vh;" class="d-flex justify-center align-center ">
         <v-form class="w-100" @submit.prevent="submit">
             <v-card class="mx-auto w-100 h-100 pa-5 pb-2" elevation="8" max-width="900" rounded="lg">
                 <div class="text-center text-h4 mb-5 text-medium-emphasis">Basic Details</div>

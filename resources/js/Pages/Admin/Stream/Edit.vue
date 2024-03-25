@@ -2,9 +2,9 @@
 import { useForm } from '@inertiajs/vue3'
 
 const form = useForm({
-    id: usePage().props.section.id ?? 0,
-    name: usePage().props.section.name ?? null,
-    class_id: usePage().props.section.class.name ?? null,
+    id: usePage().props.stream.id ?? 0,
+    name: usePage().props.stream.name ?? null,
+    class_id: usePage().props.stream.class.name ?? null,
 })
 
 let submit = () => {
@@ -17,16 +17,16 @@ let submit = () => {
 <template>
 
     <Head>
-        <title>Edit Section</title>
+        <title>Edit Stream</title>
     </Head>
     <main-vue>
-        <v-card title="Edit Section" prepend-icon="mdi-plus-circle" class="pb-4">
+        <v-card title="Edit Stream" prepend-icon="mdi-plus-circle" class="pb-4">
             <v-form @submit.prevent="submit">
                 <v-row>
 
                     <v-col cols="12" md="6">
                         <v-sheet class="mx-5 mt-3">
-                            <v-text-field v-model="form.name" :error-messages="errors.name" label="Section Name"
+                            <v-text-field v-model="form.name" :error-messages="errors.name" label="Stream Name"
                                 autofocus></v-text-field>
                         </v-sheet>
                     </v-col>
@@ -38,7 +38,7 @@ let submit = () => {
                     </v-col>
                     <v-col cols="12">
                         <v-sheet class="ps-5 text-center">
-                            <v-btn color="blue" text="Update Section" type="submit"></v-btn>
+                            <v-btn color="blue" text="Update Stream" type="submit"></v-btn>
                         </v-sheet>
                     </v-col>
                 </v-row>

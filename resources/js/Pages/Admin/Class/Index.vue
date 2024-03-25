@@ -30,7 +30,7 @@ import { Head, Link, usePage } from '@inertiajs/vue3'
                         <td>{{ item.id }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.has_stream == 1 ? 'Yes' : 'No' }}</td>
-                        <td>-</td>
+                        <td>{{ item.section_names }}</td>
                         <td>-</td>
                         <td>
                             <Link :href="item.editUrl" as="button">

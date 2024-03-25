@@ -4,7 +4,7 @@ import { useForm } from '@inertiajs/vue3'
 const form = useForm({
     id: 0,
     name: null,
-    has_stream: false,
+    class_id: null,
 })
 
 let submit = () => {
@@ -17,27 +17,28 @@ let submit = () => {
 <template>
 
     <Head>
-        <title>Create Class</title>
+        <title>Create Section</title>
     </Head>
     <main-vue>
-        <v-card title="Create Class" prepend-icon="mdi-plus-circle" class="pb-4">
+        <v-card title="Create Section" prepend-icon="mdi-plus-circle" class="pb-4">
             <v-form @submit.prevent="submit">
                 <v-row>
 
                     <v-col cols="12" md="6">
                         <v-sheet class="mx-5 mt-3">
-                            <v-text-field v-model="form.name" :error-messages="errors.name" label="Class Name"
+                            <v-text-field v-model="form.name" :error-messages="errors.name" label="Section Name"
                                 autofocus></v-text-field>
                         </v-sheet>
                     </v-col>
                     <v-col cols="12" md="6">
-                        <v-sheet class=" mx-5">
-                            <v-switch label="Has Stream" v-model="form.has_stream" color="blue"></v-switch>
+                        <v-sheet class="mx-5 mt-3">
+                            <v-select v-model="form.class_id" :items="usePage().props.classes" label="Select Class"
+                                item-title="name" item-value="id" :error-messages="errors.class_id"></v-select>
                         </v-sheet>
                     </v-col>
                     <v-col cols="12">
                         <v-sheet class="ps-5 text-center">
-                            <v-btn color="blue" text="Create Class" type="submit"></v-btn>
+                            <v-btn color="blue" text="Create Section" type="submit"></v-btn>
                         </v-sheet>
                     </v-col>
                 </v-row>

@@ -62,30 +62,38 @@ class HandleInertiaRequests extends Middleware
                                 'has_children' => false,
                             ],
                             [
-                                'text' => 'Class/Section',
+                                'text' => 'Student Manger',
+                                'icon' => 'mdi-account-school',
+                                'is_active' => request()->is('student*'),
+                                'has_children' => true,
+                                'children' => [
+                                    [
+                                        'url' => 'student.index',
+                                        'text' => 'All Student',
+                                        'is_active' => request()->is('student*'),
+                                    ],
+                                ]
+                            ],
+                            [
+                                'text' => 'Class/Section/Stream',
                                 'icon' => 'mdi-google-classroom',
-                                'is_active' => request()->is('class*') ? request()->is('class*') : request()->is('section*'),
+                                'is_active' => (request()->is('class*') ? request()->is('class*') : request()->is('section*')) ? request()->is('section*') : request()->is('stream*'),
                                 'has_children' => true,
                                 'children' => [
                                     [
                                         'url' => 'class.index',
                                         'text' => 'All Class',
-                                        'is_active' => request()->routeIs('class.index'),
-                                    ],
-                                    [
-                                        'url' => 'class.create',
-                                        'text' => 'Create Class',
-                                        'is_active' => request()->routeIs('class.create'),
+                                        'is_active' => request()->is('class*'),
                                     ],
                                     [
                                         'url' => 'section.index',
                                         'text' => 'All Section',
-                                        'is_active' => request()->routeIs('section.index'),
+                                        'is_active' => request()->is('section*'),
                                     ],
                                     [
-                                        'url' => 'section.create',
-                                        'text' => 'Create Section',
-                                        'is_active' => request()->routeIs('section.create'),
+                                        'url' => 'stream.index',
+                                        'text' => 'All Stream',
+                                        'is_active' => request()->is('stream*'),
                                     ],
                                 ]
                             ],

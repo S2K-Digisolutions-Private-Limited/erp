@@ -18,7 +18,7 @@ let submit = () => {
     <Head>
         <title>Login</title>
     </Head>
-    <div class="d-flex justify-center h-auto my-15 align-center">
+    <div style="min-height: 100vh;" class="d-flex justify-center align-center">
         <v-form @submit.prevent="submit" class="w-100">
             <v-card class="mx-auto w-100 pa-8 pb-8" elevation="8" max-width="448" rounded="lg">
                 <div class=" text-center text-h4 mb-5 text-medium-emphasis">Login</div>

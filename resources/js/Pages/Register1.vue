@@ -20,7 +20,7 @@ let submit = () => {
     <Head>
         <title>Register Now</title>
     </Head>
-    <div class="d-flex justify-center h-auto my-15 align-center ">
+    <div style="min-height: 100vh;" class="d-flex justify-center align-center ">
 
         <v-form @submit.prevent="submit" class="w-100">
             <v-card class="mx-auto w-100 pa-8 pb-8" elevation="8" max-width="448" rounded="lg">
@@ -53,6 +53,7 @@ let submit = () => {
                 <v-card-text class="text-center">
                     <Link class="text-blue text-decoration-none" :href="route('login')">
                     Log In
+                    <i class="mdi-logout-variant mdi"></i>
                     </Link>
                 </v-card-text>
             </v-card>
