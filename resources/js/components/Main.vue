@@ -21,7 +21,7 @@ watch(() => usePage().props.flash, updateSnackbars);
 updateSnackbars(usePage().props.flash);
 </script>
 <template>
-    <v-app id="inspire">
+    <v-app id="inspire" :theme="theme">
         <v-system-bar class="justify-space-between">
             <v-btn class="ms-2" :icon="leftDrawer ? 'mdi-close' : 'mdi-menu'" @click="toggleLeftDrawer"
                 variant="text"></v-btn>
@@ -30,13 +30,17 @@ updateSnackbars(usePage().props.flash);
                 <v-icon v-if="usePage().props.Auth.logged" color="green" class="mx-2"
                     title="Your Are Logged In">mdi-check-circle</v-icon>
                 <v-icon v-else class="mx-2" color="red" title="Your Are Logged Out">mdi-close-circle</v-icon>
+                <v-btn title="Change Theme" class="ms-2" @click="toggleTheme" variant="text">
+                    <v-icon>{{ theme === 'dark' ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' }}</v-icon>
+                </v-btn>
+
             </div>
             <v-btn class="ms-2" :icon="rightDrawer ? 'mdi-close' : 'mdi-menu'" @click="toggleRightDrawer"
                 variant="text"></v-btn>
         </v-system-bar>
 
         <v-navigation-drawer location="left" v-model="leftDrawer">
-            <v-sheet class="pa-4" color="grey-lighten-4">
+            <v-sheet class="pa-4">
                 <v-avatar class="mb-4" size="80">
                     <v-img alt="John" src="//placeholder.com/64x64?text=SKM"></v-img>
                 </v-avatar>
@@ -102,6 +106,7 @@ export default {
         cards: ['Today', 'Yesterday'],
         leftDrawer: false,
         rightDrawer: false,
+        theme: 'dark',
         flash: {
             success: usePage().props.flash.success,
             error: usePage().props.flash.error,
@@ -111,6 +116,12 @@ export default {
     }),
     components: { Link },
     props: { NavUrl: Array },
+    mounted() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            this.theme = savedTheme;
+        }
+    },
     methods: {
         toggleRightDrawer() {
             this.rightDrawer = !this.rightDrawer;
@@ -119,6 +130,16 @@ export default {
         toggleLeftDrawer() {
             this.rightDrawer = false;
             this.leftDrawer = !this.leftDrawer;
+        },
+        toggleTheme() {
+            if (this.theme == 'dark') {
+                this.theme = 'light';
+            } else {
+                this.theme = 'dark';
+            }
+
+            // Save the theme preference to local storage
+            localStorage.setItem('theme', this.theme);
         }
     }
 }

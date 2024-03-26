@@ -30,10 +30,10 @@
         rel="stylesheet">
  --}}
 
+    @routes
 </head>
 
 <body class="font-sans antialiased">
-    @routes
     @inertia
     {{-- <script src="{{ asset('build/assets/app-BbLAZk9T.js') }}" defer></script> --}}
 </body>
