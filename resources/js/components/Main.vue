@@ -30,7 +30,7 @@ updateSnackbars(usePage().props.flash);
                 <v-icon v-if="usePage().props.Auth.logged" color="green" class="mx-2"
                     title="Your Are Logged In">mdi-check-circle</v-icon>
                 <v-icon v-else class="mx-2" color="red" title="Your Are Logged Out">mdi-close-circle</v-icon>
-                <v-btn title="Change Theme" class="ms-2" @click="toggleTheme" variant="text">
+                <v-btn title="Change Theme" class=" px-0" @click="toggleTheme" variant="text">
                     <v-icon>{{ theme === 'dark' ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' }}</v-icon>
                 </v-btn>
 

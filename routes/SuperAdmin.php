@@ -42,6 +42,7 @@ Route::group(["middleware" => ["auth", "auth:school", "step.check"]], function (
     Route::group(['prefix' => '/student'], function () {
         Route::get('/', [StudentController::class, 'index'])->name('student.index');
         Route::get('/create', [StudentController::class, 'create'])->name('student.create');
+        Route::get('/edit/{slug}', [StudentController::class, 'edit'])->name('student.edit');
         Route::post('/create/{id}', [StudentController::class, 'insert'])->name('student.insert');
     });
 

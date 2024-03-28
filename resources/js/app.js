@@ -30,9 +30,9 @@ createInertiaApp({
             .mount(el)
     },
 })
-    .then(() => {
-        document.getElementById('app').removeAttribute('data-page');
-    });
+// .then(() => {
+//     document.getElementById('app').removeAttribute('data-page');
+// });
 
 import { InertiaProgress } from '@inertiajs/progress'
 

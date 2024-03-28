@@ -1,27 +1,28 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3'
 // watch
+let student = usePage().props.student;
 const form = useForm({
-    id: 0,
-    name: null,
-    status: true,
-    email: null,
-    phone: null,
-    gender: 'Male',
-    hidden_password: 'Student123',
-    father_name: null,
-    mother_name: null,
-    father_number: null,
-    mother_number: null,
-    whatsapp_number: null,
-    primary_email: null,
-    full_address: null,
-    roll_number: null,
-    class_id: null,
-    section_id: null,
-    stream_id: null,
+    name: student.name || null,
+    status: student.status == 1 ? true : false,
+    email: student.email || null,
+    phone: student.phone || null,
+    gender: student.gender || 'Male',
+    hidden_password: student.hidden_password || 'Student123',
+    father_name: student.father_name || null,
+    mother_name: student.mother_name || null,
+    father_number: student.father_number || null,
+    mother_number: student.mother_number || null,
+    whatsapp_number: student.whatsapp_number || null,
+    primary_email: student.primary_email || null,
+    full_address: student.full_address || null,
+    roll_number: student.roll_number || null,
+    class_id: (student && student.class && student.class.name) || null,
+    section_id: (student && student.section && student.section.name) || null,
+    stream_id: (student && student.stream && student.stream.name) || null,
     profile_image: null,
 });
+
 
 let submit = () => {
     const url = usePage().props.PortUrl?.toString(); // Use optional chaining to handle possible null or undefined
@@ -34,13 +35,12 @@ let submit = () => {
 }
 let classes = usePage().props.classes;
 let classChangeHandler = () => {
-    console.log('Class selection changed'); // Log message to verify if the function is called
-    form.section_id = null; // Reset section_id when class changes
-    form.stream_id = null; // Reset stream_id when class changes
+    console.log('Class selection changed');
+    form.section_id = null;
+    form.stream_id = null;
 }
 watch(() => form.class_id, (newValue, oldValue) => {
-    console.log('Class selection changed:', newValue); // Log the new value when class selection changes
-    classChangeHandler(); // Call the classChangeHandler function to reset section and stream IDs
+    classChangeHandler();
 });
 
 const getSections = () => {
@@ -68,7 +68,7 @@ const getStreams = () => {
 <template>
 
     <Head>
-        <title>Create Student</title>
+        <title>Edit Student</title>
     </Head>
     <MainVue>
         <v-card class="pb-4">
@@ -210,7 +210,7 @@ const getStreams = () => {
                     </v-col>
                     <v-col cols="12">
                         <v-sheet class="ps-5 text-center">
-                            <v-btn color="blue" text="Create Student" type="submit"></v-btn>
+                            <v-btn color="blue" text="Update Student" type="submit"></v-btn>
                         </v-sheet>
                     </v-col>
                 </v-row>
