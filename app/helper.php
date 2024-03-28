@@ -14,8 +14,8 @@ if (!function_exists('school_ref')) {
         $limit = 8;
         $text = Auth::user()->school_name ?? 'ERPTEST';
         $words = explode(' ', mb_strtoupper($text));
-        $words = array_slice($words, 0, $limit);
-        return implode(' ', $words) . '-STU-00';
+        $words = array_slice(array_filter($words), 0, $limit); // Filter out empty elements
+        return trim(implode('', $words) . '-STU-00'); // Remove space from implode
     }
 }
 

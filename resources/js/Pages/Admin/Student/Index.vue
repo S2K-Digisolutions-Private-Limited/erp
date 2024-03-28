@@ -19,7 +19,8 @@
                     {{ item.section.name }} <!-- Assuming section object has a 'name' property -->
                 </template>
                 <template v-slot:item.stream="{ item }">
-                    {{ item.stream.name }} <!-- Assuming stream object has a 'name' property -->
+                    {{ student && student.section && student.section.name }}
+                    <!-- Assuming stream object has a 'name' property -->
                 </template>
                 <template v-slot:item.status="{ item }">
                     {{ item.has_stream == 1 ? 'Yes' : 'No' }} <!-- Assuming stream object has a 'name' property -->

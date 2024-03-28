@@ -5,6 +5,7 @@ use App\Http\Controllers\School\Admin\Classes;
 use App\Http\Controllers\School\Admin\SectionController;
 use App\Http\Controllers\School\Admin\StreamController;
 use App\Http\Controllers\School\Admin\StudentController;
+use App\Http\Controllers\School\SuperAdmin\EmailHistory;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -45,6 +46,7 @@ Route::group(["middleware" => ["auth", "auth:school", "step.check"]], function (
         Route::get('/edit/{slug}', [StudentController::class, 'edit'])->name('student.edit');
         Route::post('/create/{id}', [StudentController::class, 'insert'])->name('student.insert');
     });
+
 
 
 

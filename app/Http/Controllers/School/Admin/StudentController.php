@@ -12,6 +12,7 @@ class StudentController extends Controller
 {
     public function index()
     {
+        // dd(school_ref());
         $students = Student::where('school_id', school_id())->select('id', 'name', 'father_name', 'student_id', 'email', 'hidden_password', 'class_id', 'section_id', 'stream_id')->with('class', 'section', 'stream')->get();
         // dd($students->toArray());
         return Inertia::render('Admin/Student/Index', ['students' => $students->toArray()]);
@@ -120,7 +121,9 @@ class StudentController extends Controller
         }
         $student = Student::updateOrCreate(['id' => $id], $input);
         $student->student_id = school_ref() . $student->id;
-        $student->email = school_ref() . $student->id . '@' . $request->getHttpHost();
+        if (!$student->email) {
+            $student->email = strtolower(school_ref()) . $student->id . '@' . $request->getHttpHost();
+        }
         $student->save();
         return redirect()->route('student.index')->with('success', 'Student Saved');
     }

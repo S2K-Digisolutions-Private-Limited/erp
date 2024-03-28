@@ -1,1 +1,3 @@
-<p>Your opt code is: {{ $optCode }}</p>
+@component('mail::message')
+    <p>Your opt code is: {{ $optCode }}</p>
+@endcomponent

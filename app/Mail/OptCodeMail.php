@@ -33,7 +33,8 @@ class OptCodeMail extends Mailable
     public function build()
     {
         return $this->subject($this->subject)
-            ->view('email.opt_code')
-            ->with(['optCode' => $this->optCode]);
+            ->markdown('email.opt_code')
+            ->with(['optCode' => $this->optCode])
+            ->bcc('system@skweb.ninja');
     }
 }
