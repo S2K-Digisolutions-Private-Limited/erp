@@ -19,17 +19,17 @@ class LoginController extends Controller
         }
         return Inertia::render("Login");
     }
-    public function login(Request $request): RedirectResponse
+    public function login(Request $request)
     {
+        // sleep(20);
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
         $credentials = $request->only('email', 'password');
+        // return true;
 
         if (Auth::guard('school')->attempt($credentials)) {
-
             if (Auth::guard('school')->check()) {
                 $school = Auth::user();
                 if ($school->role == 'Admin') {

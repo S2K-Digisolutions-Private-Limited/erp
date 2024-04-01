@@ -4,9 +4,12 @@ import { useForm, Head } from '@inertiajs/vue3'
 const form = useForm({
     email: null,
     password: null,
-})
+});
+
+// let loading = false;
 
 let submit = () => {
+    // loading = true;
     const url = route('login'); // Use optional chaining to handle possible null or undefined
     if (url) {
         form.post(url);

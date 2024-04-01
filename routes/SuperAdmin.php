@@ -5,6 +5,7 @@ use App\Http\Controllers\School\Admin\Classes;
 use App\Http\Controllers\School\Admin\SectionController;
 use App\Http\Controllers\School\Admin\StreamController;
 use App\Http\Controllers\School\Admin\StudentController;
+use App\Http\Controllers\School\Admin\SubjectController;
 use App\Http\Controllers\School\SuperAdmin\EmailHistory;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -38,7 +39,14 @@ Route::group(["middleware" => ["auth", "auth:school", "step.check"]], function (
         Route::delete('/{id}/delete', [StreamController::class, 'delete'])->name('stream.delete');
     });
 
-
+    // subject
+    Route::group(['prefix' => '/subject'], function () {
+        Route::get('/', [SubjectController::class, 'index'])->name('subject.index');
+        Route::get('/create', [SubjectController::class, 'create_page'])->name('subject.create');
+        Route::get('/{id}/edit', [SubjectController::class, 'edit_page'])->name('subject.edit');
+        Route::post('/insert', [SubjectController::class, 'insert'])->name('subject.insert');
+        Route::delete('/{id}/delete', [SubjectController::class, 'delete'])->name('subject.delete');
+    });
 
     Route::group(['prefix' => '/student'], function () {
         Route::get('/', [StudentController::class, 'index'])->name('student.index');

@@ -77,7 +77,7 @@ class HandleInertiaRequests extends Middleware
                             [
                                 'text' => 'Class/Section/Stream',
                                 'icon' => 'mdi-google-classroom',
-                                'is_active' => (request()->is('class*') ? request()->is('class*') : request()->is('section*')) ? request()->is('section*') : request()->is('stream*'),
+                                'is_active' => ((request()->is('class*') ? request()->is('class*') : request()->is('section*')) ? request()->is('section*') : request()->is('stream*')) ? request()->is('stream*') : request()->is('subject*'),
                                 'has_children' => true,
                                 'children' => [
                                     [
@@ -94,6 +94,11 @@ class HandleInertiaRequests extends Middleware
                                         'url' => 'stream.index',
                                         'text' => 'All Stream',
                                         'is_active' => request()->is('stream*'),
+                                    ],
+                                    [
+                                        'url' => 'subject.index',
+                                        'text' => 'All Subject',
+                                        'is_active' => request()->is('subject*'),
                                     ],
                                 ]
                             ],
