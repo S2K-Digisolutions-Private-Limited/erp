@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\School\Admin\Classes;
+use App\Http\Controllers\School\Admin\HomeController;
 use App\Http\Controllers\School\Admin\SectionController;
 use App\Http\Controllers\School\Admin\StreamController;
 use App\Http\Controllers\School\Admin\StudentController;
@@ -13,7 +14,7 @@ use Inertia\Inertia;
 // ---------------------------- Step To School Status ---------------------------------------------\\
 Route::group(["middleware" => ["auth", "auth:school", "step.check"]], function () {
     //-------------------------------------- Home Route Start---------------------------------------\\
-    Route::inertia('/dashboard', 'Home')->name('home');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 
     // -------------------------Classes CRUD ------------------------\\
     Route::group(['prefix' => '/class'], function () {

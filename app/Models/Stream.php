@@ -19,4 +19,8 @@ class Stream extends Model
     {
         return $this->belongsTo(Classes::class, 'class_id', 'id');
     }
+    public function students()
+    {
+        return $this->hasMany(Student::class, 'stream_id', 'id');
+    }
 }

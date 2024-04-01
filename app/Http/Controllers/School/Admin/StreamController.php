@@ -17,6 +17,7 @@ class StreamController extends Controller
             $stream['editUrl'] = route('stream.edit', $stream['id']);
             $stream['deleteUrl'] = route('stream.delete', $stream['id']);
             $stream['class_name'] = $stream->class->name ?? '-';
+            $stream['student_count'] = $stream->students()->count();
         }
         // dd($streams);
         return Inertia::render(

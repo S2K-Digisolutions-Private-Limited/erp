@@ -17,6 +17,7 @@ class SectionController extends Controller
             $section['editUrl'] = route('section.edit', $section['id']);
             $section['deleteUrl'] = route('section.delete', $section['id']);
             $section['class_name'] = $section->class->name ?? '-';
+            $section['student_count'] = $section->students()->count();
         }
         // dd($sections);
         return Inertia::render(

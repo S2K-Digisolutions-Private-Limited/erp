@@ -23,4 +23,8 @@ class Classes extends Model
     {
         return $this->hasMany(Stream::class, 'class_id', 'id');
     }
+    public function students()
+    {
+        return $this->hasMany(Student::class, 'class_id', 'id');
+    }
 }

@@ -31,7 +31,7 @@ import { Head, Link, usePage } from '@inertiajs/vue3'
                         <td>{{ item.name }}</td>
                         <td>{{ item.has_stream == 1 ? 'Yes' : 'No' }}</td>
                         <td>{{ item.section_names }}</td>
-                        <td>-</td>
+                        <td>{{ item.student_count }}</td>
                         <td>
                             <Link :href="item.editUrl" as="button">
                             <v-btn density="compact" icon="mdi-pencil" size="large" class="mx-2" title="Edit"></v-btn>

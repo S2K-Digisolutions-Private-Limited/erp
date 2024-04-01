@@ -29,7 +29,7 @@ import { Head, Link, usePage } from '@inertiajs/vue3'
                         <td>{{ item.id }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.class_name }}</td>
-                        <td>-</td>
+                        <td>{{ item.student_count }}</td>
                         <td>
                             <Link :href="item.editUrl" as="button">
                             <v-btn density="compact" icon="mdi-pencil" size="large" class="mx-2" title="Edit"></v-btn>

@@ -15,7 +15,8 @@ class Classes extends Controller
         foreach ($classes as $class) {
             $class['editUrl'] = route('class.edit', $class['id']);
             $class['deleteUrl'] = route('class.delete', $class['id']);
-            $class['section_names'] = implode(' ,', $class->sections()->pluck('name')->toArray());
+            $class['section_names'] = implode(', ', $class->sections()->pluck('name')->toArray());
+            $class['student_count'] = $class->students()->count();
         }
         // dd($classes);
         return Inertia::render(
